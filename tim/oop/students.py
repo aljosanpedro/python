@@ -50,5 +50,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# challenge: automate self-vars assignment
