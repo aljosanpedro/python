@@ -1,4 +1,5 @@
 class Split:
+    
     @staticmethod
     def data(data):
         lines = data.split("\n") # list of lines
@@ -8,9 +9,9 @@ class Split:
     @staticmethod
     def lines(lines):
         groups = []
+        
         for line in lines:
             group = line.split(", ") 
-            
             groups.append(group) # list of lists of themes
 
         return groups
@@ -23,6 +24,7 @@ class Split:
             # bc string.strip() for strings only, not lists
             
         themes = []
+        
         for group in groups:
             for theme in group:
                 theme = theme.strip()
@@ -31,9 +33,11 @@ class Split:
         return themes
 
 class Themes:
+    
     @staticmethod
     def count(themes):
         theme_count = {}
+        
         for theme in themes:
             if theme not in theme_count.keys():
                 theme_count.update({theme : 0})
@@ -60,6 +64,8 @@ class Themes:
     @staticmethod
     def show(theme_count):
         for theme in theme_count:
+            # don't use enumerate(dict) bc doesn't give values
+                # theme : count -> n. theme, n = 0,1,2...
             print(f"{theme}: {theme_count[theme]}")
 
 def main():
