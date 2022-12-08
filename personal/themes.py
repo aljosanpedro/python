@@ -12,7 +12,7 @@ class Split:
         
         for line in lines:
             group = line.split(", ") 
-            groups.append(group) # list of lists of themes
+            groups.append(group) # list of lists
 
         return groups
 
@@ -48,9 +48,6 @@ class Themes:
 
     @staticmethod
     def sort(theme_count):
-        # in:  {theme2:count2, theme1:count1, theme3:count3}
-        # out: {theme1:count1, theme2:count2: theme3:count3}
-
         theme_count_list = theme_count.items() # list of tuples
         theme_count_list = sorted(theme_count_list) # alphabetical
 
@@ -69,6 +66,7 @@ class Themes:
             print(f"{theme}: {theme_count[theme]}")
 
 def main():
+    # challenge: read data from separate file
     data = """Beauty Standards, Media Exposure, Body Image
     Beauty Standards, Cultural Hybridization
     Body Image, Beauty and Race/Culture
@@ -82,12 +80,12 @@ def main():
     Sexism, Sikolohiyang Pilipino, Kagandahang Panloob at Panlabas
     Beauty Standards, Hallyu Consumption Behavior"""
     
-    lines  = Split.data(data)
-    groups = Split.lines(lines)
-    themes = Split.groups(groups)
+    lines  = Split.data(data) # list
+    groups = Split.lines(lines) # list of lists
+    themes = Split.groups(groups) # flattened list
 
-    theme_count = Themes.count(themes)
-    theme_count = Themes.sort(theme_count)
+    theme_count = Themes.count(themes) # dict
+    theme_count = Themes.sort(theme_count) # sorted dict
 
     Themes.show(theme_count)
 
